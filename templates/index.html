@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"
+            defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/controller/loginRegister.js') }}" defer></script>
+    {% if title %}
+        <title>ProMan - {{ title }}</title>
+    {% else %}
+        <title>ProMan</title>
+    {% endif %}
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+
+<body>
+<header class="site-header">
+    {#    <nav class="navbar navbar-expand-lg bg-body-tertiary">#}
+    <nav class="custom-navbar navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">ProMan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <!--otwieranie modala, bs toggle i target musi być -->
+                <button type="button" id="loginButton" class="btn btn-primary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Login
+                </button>
+                <button type="button" id="registerButton" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    Register
+                </button>
+                <button id="logoutButton" style="display: none;">Wyloguj</button>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Right Side -->
+
+</header>
+<main role="main" class="container">
+    <div class="container custom-container-margin"></div>
+    <div id="root"></div>
+</main>
+<footer class="footer mt-auto py-2 custom-footer fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <span class="text-footer">© 2023 ProMan</span>
+            </div>
+            <div class="col-sm">
+                <span class="text-footer text-right">Terms of Use, Privacy Policy</span>
+            </div>
+            <div class="col-sm">
+                <span class="text-footer text-right">Supported Payment Methods</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% include "register_modal.html" %}
+{% include "login_modal.html" %}
+</body>
+</html>
